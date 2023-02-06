@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tangerine Editor</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <style>
+		  main.outer_main {
+				font-family: Roboto, 'Helvetica Neue', sans-serif;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+		#left {
+			text-align: left;
+			width: 20%;
+			float: left;
+			border-right: 2px solid #e8e6e6;
+			height: 100%;   
+			position: fixed; 
+			z-index: 1; 
+			top: 0; 
+			left: 0; 
+			overflow-x: hidden;  
+			transition: 0.5s; /
+			}
+			section#right {
+				margin-left: 20%;
+				top: 0;
+				left: 0;
+				right: 0;
+				padding: 0px;
+				position: absolute;
+				width: -webkit-fill-available;
+				overflow: hidden;
+			}
+			.logo img {
+				width: 66%;
+				padding: 10px 35px 10px 35px;
+			}
+			section#left ul li {
+				list-style-type: none;
+				text-decoration: none;
+			}
+			section#left ul li a {
+				text-decoration: none;
+				font-family: Roboto, 'Helvetica Neue', sans-serif;
+				font-size: 16px;
+				color: #5b5959;
+				line-height: 3;
+				font-weight: 100;
+				padding: 5px 25px;
+			}
+			nav.top_nav .active {
+				background: #f26f10;
+				color: #fff !important;
+				width: 100%;
+				display: block;
+			}
+			nav.top_nav ul {
+				padding: 0;
+			}
+			nav.bottom_nav {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+			nav.bottom_nav ul {
+				padding: 0;
+			}
+			section#left ul li:hover {
+				background: #e4dfdf;
+			}
+			nav.top_nav ul li i {
+				padding: 10px;
+			}
+			nav.bottom_nav ul li i {
+				padding: 10px;
+			}
+			.r_top_left {
+				float: left;
+			}
+			.r_top_right {
+				text-align: right;
+				margin-right: 35px;
+			}
+			.r_top {
+				background: #3c5b8d;
+				width: 100%;
+				display: inline-block;
+				color: #fff;
+				padding: 20px;
+			}
+			.r_middle {
+				background: #2d7dd2;
+				color: #fff;
+				padding: 15px;
+			}
+			ul.r_path {
+				list-style-type: none;
+				display: inline-flex;
+				padding: 0;
+				font-size: 17px;
+				margin-top: 0;
+			}
+			#myProgress {
+			  width: 100%;
+			  background-color: #ddd;
+			  border-radius: 5px;
+			}
+
+			#myBar {
+			  width: 10%;
+			  height: 30px;
+			  background-color: #04AA6D;
+			  text-align: center;
+			  line-height: 30px;
+			  color: #fff;
+			  border-radius: 5px;
+			}
+			.r_main_body {
+				padding: 25px;
+			}
+			.r_main_body button {
+				margin-bottom: 15px;
+				background: #f26f10;
+				color: #fff;
+				border: 1px solid #b9b4b4;
+				padding: 10px 15px;
+				border-radius: 5px;
+			}
+			.feedback_left ul li {
+				list-style-type: none;
+				color: #706d6d;
+				padding: 5px;
+			}
+			.feedback_left ul li i {
+				padding-right: 10px;
+			}
+			.feedback_left h2 {
+				color: #3c5b8d;
+			}
+			.r_main_body h2 {
+				    color: #3c5b8d;
+					padding: 0px;
+					margin: 7px 5px;
+			}
+			.performance_report {
+				text-align: center;
+				background: #f26f10;
+				color: #fff;
+				padding: 15px;
+				font-size: 18px;
+				margin-top: 5px;
+				border-radius: 5px;
+			}
+			.feedback_left {
+				width: 65%;
+				float: left;
+			}
+			.outer_feedback {
+				display: inline-block;
+				width: 100%;
+			}
+			.feedback_right {
+				display: inline-block;
+				width: 99%;
+				border-left: 2px solid #f3efef;
+				padding-left: 10px;
+			}
+			table.result_feedback {
+				    width: -webkit-fill-available;
+					text-align: left;
+					border: 1px solid #e0d8d8;
+					border-radius: 5px;
+					padding: 10px;
+			}
+			.result_feedback thead {
+				background: #f26f10;
+				padding: 15px;
+			}
+			.result_feedback tr td {
+				border: 1px solid #b0adad !important;
+				padding: 5px;
+			}
+			.r_top .icon {
+				display: none;
+			}
+			<!---------------------tab start---------------->
+			
+
+			/* Style the buttons inside the tab */
+			.tab button {
+			  background-color: inherit;
+			  float: left;
+			  border: none;
+			  outline: none;
+			  cursor: pointer;
+			  padding: 14px 16px;
+			  transition: 0.3s;
+			  font-size: 17px;
+			}
+
+			/* Change background color of buttons on hover */
+			.tab button:hover {
+			  background-color: #f26f10;
+			}
+
+			/* Create an active/current tablink class */
+			.tab button.active {
+				background-color: #f26f10;
+				color: #fff;
+				border: 2px solid #dc6005;
+			}
+			button.tablinks {
+			padding: 10px 25px;
+			background: #2d7dd2;
+			color: #fff;
+			border: 2px solid #2d7dd2;
+			font-size: x-large;
+			box-shadow: 1px 2px 1px 0px #2d6199;
+			font-weight: 600;
+			cursor: pointer;
+		}
+
+			/* Style the tab content */
+			.tabcontent {
+			  display: none;
+			  padding: 6px 12px;
+			  border: 1px solid #ccc;
+			  border-top: none;
+			}
+			.tab {
+				overflow: hidden;
+				border: 1px solid #1976da;
+				background-color: #2d7dd2;
+				padding: 1px;
+			}
+			table.result_feedback tr th {
+				color: #fff;
+				padding: 5px;
+			}
+			p.discussion {
+				text-align: justify;
+				padding: 0px 10px;
+				color: #555;
+			}
+			<!------------------end tab--------------------->
+			
+	  </style>
+	  
+</head>
+<body>
+  <header>
+    
+  </header>
+  <main class="outer_main" id="myTopnav">
+    <section id="left">
+		<div class="logo">
+			<img src="https://fln.tangerinecentral.org/assets/tangerine-logo-box.png">
+		</div>
+		<nav class="top_nav topnav">
+		  <ul>
+			<li><a href="#" class="active"><i class="fa fa-pencil"></i>Author</a></li>
+			<li><a href="#"><i class="fa fa-list-alt"></i>Data</a></li>
+			<li><a href="#"><i class="fa fa-cog"></i>Configure</a></li>
+			<li><a href="#"><i class="fa fa-file-audio-o"></i>Deploy</a></li>
+		  </ul>
+		</nav>
+		<nav class="bottom_nav topnav" id="myTopnav">
+		  <ul>
+			<li><a href="#"><i class="fa fa-futbol-o"></i>Groups</a></li>
+			<li><a href="#"><i class="fa fa-question-circle"></i>Help</a></li>
+			<li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+		  </ul>
+		</nav>
+      
+    </section>
+    <section id="right">
+		<div class="r_top">
+			
+			<div class="r_top_left">Group Name</div>
+			<div class="r_top_right"><i class="fa fa-user-circle-o"></i> User Name</div>
+		</div>
+		
+		<!------------------------tab start----------------------->
+		<div class="tab">
+		  <button class="tablinks active" onclick="openSummary(event, 'SummaryTab')">Summary</button>
+		  <button class="tablinks" onclick="openSummary(event, 'ResultTab')">Result</button>		  
+		</div>
+		<div id="SummaryTab" class="tabcontent r_main_body">
+		  <h2>Performance</h2>
+			<button onclick="move()">Check</button>
+			<div id="myProgress">			
+			  <div id="myBar"></div>
+			</div>
+			<div class="performance_report">
+				<p>You are doing "Excellent". Just be focused on performance and keep it up.</p>
+				<p>You may put more attention on students who are not doing well. Best of luck.</p>
+			</div> 
+			<div class="outer_feedback">
+				<div class="feedback_left">
+					<h2>Here are some feedback and suggestions for you!</h2>
+					<h3>Feedback : </h3>
+						<ul>
+							<li><i class="fa fa-hand-o-right"></i> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+							<li><i class="fa fa-hand-o-right"></i> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+							<li><i class="fa fa-hand-o-right"></i> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+							<li><i class="fa fa-hand-o-right"></i> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+							<li><i class="fa fa-hand-o-right"></i> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+						</ul>
+					<h3>Resources : </h3>
+						<ul>
+							<li><i class="fa fa-hand-o-right"></i> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+							<li><i class="fa fa-hand-o-right"></i> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+							<li><i class="fa fa-hand-o-right"></i> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+							<li><i class="fa fa-hand-o-right"></i> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+							<li><i class="fa fa-hand-o-right"></i> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+						</ul>
+				</div>
+				
+			</div>
+		</div>
+
+		<div id="ResultTab" class="tabcontent r_main_body">
+		  <div class="feedback_right">
+					<h2>Basic Details </h2>
+					<table class="result_feedback">
+					  <thead>
+						<tr>
+						  <th>Field</th>
+						  <th>Value</th>
+						 </tr>
+					  </thead>
+					  <tbody>
+						<tr>
+						  <td>Visit ID</td>
+						  <td>SMRY00001</td>
+						  
+						</tr>
+						<tr>
+						  <td>Name of FI</td>
+						  <td>Mr. Siddharth</td>
+						  
+						</tr>
+						<tr>
+						  <td>Name of Teacher</td>
+						  <td>Mr. Krishan Kumar</td>
+						  
+						</tr>
+						<tr>
+						  <td>Date</td>
+						  <td>01.02.2023</td>
+						  
+						</tr>
+						<tr>
+						  <td>Next Visit</td>
+						  <td>15.02.2023</td>
+						  
+						</tr>
+					  </tbody>
+					</table>
+					<h2>Ovservations </h2>
+					<table class="result_feedback">
+					  <thead>
+						<tr>
+						  <th>S.N.</th>
+						  <th>Indicators</th>
+						  <th>Rating</th>
+						  <th>Passage</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr>
+						  <td>1</td>
+						  <td>Indicator 1</td>
+						  <td>Accurate</td>
+						  <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>						  
+						</tr>
+						<tr>
+						  <td>2</td>
+						  <td>Indicator 2</td>
+						  <td>Below Accurate</td>
+						  <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
+						</tr>
+						<tr>
+						  <td>3</td>
+						  <td>Indicator 3</td>
+						  <td>Accurate</td>
+						  <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
+						</tr>
+						<tr>
+						  <td>4</td>
+						  <td>Indicator 4</td>
+						  <td>Below Accurate</td>
+						  <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
+						</tr>
+					  </tbody>
+					</table>
+					<h2>Discussion  </h2>
+					<p class="discussion">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+					<br>
+				</div>
+		</div>
+		
+		<!------------------end tab--------------------->
+		
+      
+	  <footer>
+		
+	  </footer>
+    </section>
+    
+	
+  </main>
+  <script>
+	var i = 0;
+	function move() {
+	  if (i == 0) {
+		i = 1;
+		var elem = document.getElementById("myBar");
+		var width = 10;
+		var id = setInterval(frame, 10);
+		function frame() {
+		  if (width >= 80) {
+			clearInterval(id);
+			i = 0;
+		  } else {
+			width++;
+			elem.style.width = width + "%";
+			elem.innerHTML = width  + "%";
+		  }
+		}
+	  }
+	}
+	
+
+						
+			
+			function openSummary(evt, tabName) {
+			  var i, tabcontent, tablinks;
+			  tabcontent = document.getElementsByClassName("tabcontent");
+			  for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			  }
+			  tablinks = document.getElementsByClassName("tablinks");
+			  for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			  }
+			  document.getElementById(tabName).style.display = "block";
+			  if(evt) evt.currentTarget.className += " active";
+				else document.querySelector('button.tablinks').className += " active";
+			}
+			document.body.addEventListener('DOMContentLoaded', openSummary(event, 'SummaryTab'));
+			
+			
+</script>
+</body>
+</html>
