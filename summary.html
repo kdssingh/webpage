@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Tangerine Editor</title>
+  <link rel="icon" type="image/x-icon" href="https://fln.tangerinecentral.org/favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	  <style>
 		  main.outer_main {
@@ -184,6 +185,10 @@
 			.r_top .icon {
 				display: none;
 			}
+			table.result_feedback tr td p {
+				padding: 0;
+				margin: 0;
+			}
 			<!---------------------tab start---------------->
 			
 
@@ -323,6 +328,7 @@
 		<div id="ResultTab" class="tabcontent r_main_body">
 		  <div class="feedback_right">
 					<h2>Basic Details </h2>
+					<button onClick="GFG_AutoId()">Generate ID</button>
 					<table class="result_feedback">
 					  <thead>
 						<tr>
@@ -333,7 +339,7 @@
 					  <tbody>
 						<tr>
 						  <td>Visit ID</td>
-						  <td>SMRY00001</td>
+						  <td><p id="GFG_DOWN"> </p></td>
 						  
 						</tr>
 						<tr>
@@ -451,6 +457,16 @@
 			}
 			document.body.addEventListener('DOMContentLoaded', openSummary(event, 'SummaryTab'));
 			
+			// ID generate
+			var up = document.getElementById('GFG_UP');
+    var down = document.getElementById('GFG_DOWN');
+    up.innerHTML =
+    'Click on the button to generate alpha-numeric string';
+      
+    function GFG_AutoId() {
+        down.innerHTML =
+        Math.random().toString(36).slice(2).substring(5);
+    }
 			
 </script>
 </body>
